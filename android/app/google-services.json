@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "961947925079",
+    "project_id": "negociom2",
+    "storage_bucket": "negociom2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961947925079:android:bb9728e5da4f67cc730112",
+        "android_client_info": {
+          "package_name": "com.manda2negocio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961947925079-l16hpnufs1ot5jlr814gtc38uaaj7m0n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAam0WMN94d4E7SnYTsmTa5HKIcofaMMFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961947925079-l16hpnufs1ot5jlr814gtc38uaaj7m0n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
