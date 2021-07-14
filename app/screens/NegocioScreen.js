@@ -41,7 +41,7 @@ export default class Negocio extends Component {
             );
 
             //console.log(TiendaID)
-            var url = "http://192.168.0.5/manda2/api/api.php?type=consulta&que=establecimientos&est=";
+            var url = "http://192.168.0.11/manda2/api/api.php?type=consulta&que=establecimientos&est=";
             var link = url + TiendaID;
             return fetch(link.replace(/['"]+/g, ''))
                 .then(response => response.json())

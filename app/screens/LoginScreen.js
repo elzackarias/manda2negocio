@@ -101,7 +101,7 @@ export default function LoginScreen(props) {
     function iniciarSesion(props) {
         setLoading(true);
         if ((email !== '') && (password !== '')) {
-            fetch('http://192.168.0.5/manda2/api/negocios.php?type=login', {
+            fetch('http://192.168.0.11/manda2/api/negocios.php?type=login', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

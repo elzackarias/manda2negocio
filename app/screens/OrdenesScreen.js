@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet, Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage'
 import color from '@styles/colors'
-import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icono from 'react-native-vector-icons/MaterialCommunityIcons';
 import { mainStyles, loginStyles } from '@styles/styles'
@@ -15,7 +14,7 @@ export default class Ordenes extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { isLoading: true, dataOrdenes: [], usuario: [], module: 1, token: '' };
+    this.state = { isLoading: true, usuario: [], module: 1, token: '' };
   }
 
   async componentDidMount() {
@@ -23,29 +22,8 @@ export default class Ordenes extends Component {
     const usuario = await AsyncStorage.getItem("@usuario:key")
     const token = navigation.getParam('token');
 
-    this.setState({ usuario: JSON.parse(usuario), token: token });
+    this.setState({ usuario: JSON.parse(usuario), token: token, isLoading: false });
 
-    const settings = {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json; charset=utf-8'
-      },
-      body: JSON.stringify({
-        dataUser: this.state.usuario,
-      })
-    };
-
-    try {
-      //AQUI SE VA A CONECTAR CON LA API PARA OBTENER LAS ORDENES DEL USUARIO
-      const fetchResponse = await fetch('http://192.168.0.5/manda2/api/api.php?type=consulta&que=ordenes', settings);
-      const data = await fetchResponse.json();
-      console.log(this.state.token)
-      this.setState({ dataOrdenes: data, isLoading: false });
-      //console.log(this.state.dataOrdenes)
-    } catch (e) {
-      alert(e)
-    }
   }
 
   render() {

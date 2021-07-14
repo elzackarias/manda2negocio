@@ -26,7 +26,7 @@ export default class Negocio extends Component {
             const respuesta = await AsyncStorage.getItem("@usuario:key")
             this.setState({ information: JSON.parse(respuesta) })
             var arreglo = { "datos": { "elapsed": "37 min", "fecha": "03:04 PM", "id": "37c45a349eb740bb325dd47860d5267a", "nombre": "Silvanna", "subtotal": "9", "total": "29", "uid": "12" }, "productos": [{ "cantidad": "1", "nombre": "Agua Ciel 600ml", "subtotal": "9" }] }
-            var url = "http://192.168.0.5/manda2/api/ordenes.php?type=consulta&que=nuevas_ordenes";
+            var url = "http://192.168.0.11/manda2/api/ordenes.php?type=consulta&que=nuevas_ordenes";
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -55,7 +55,7 @@ export default class Negocio extends Component {
 
     getProds() {
         this.setState({ isLoading: true })
-        var url = "http://192.168.0.5/manda2/api/negocios.php?type=consulta&que=establecimientos&est=";
+        var url = "http://192.168.0.11/manda2/api/negocios.php?type=consulta&que=establecimientos&est=";
         var link = url + this.state.information.id;
         return fetch(link.replace(/['"]+/g, ''))
             .then(response => response.json())
@@ -122,9 +122,9 @@ export default class Negocio extends Component {
                     backdropColor="#000"
                     backdropOpacity={0}
                     animationInTiming={600}
-                    animationOutTiming={600}
+                    animationOutTiming={300}
                     backdropTransitionInTiming={600}
-                    backdropTransitionOutTiming={600}
+                    backdropTransitionOutTiming={100}
                     onBackdropPress={this.close}>
                     <View style={{ backgroundColor: '#fff', padding: 8, borderRadius: 4, elevation: 5, borderColor: '#bbbbbb5c', borderWidth: 1 }}>
                         <View style={{ flexDirection: 'row', borderBottomColor: '#e6e8eb', borderBottomWidth: 1, padding: 12 }}>
