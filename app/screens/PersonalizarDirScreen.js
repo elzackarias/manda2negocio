@@ -69,7 +69,7 @@ export default class PersonalizarDir extends Component {
             Alert.alert('Ups..', 'Por favor ingrese alguna referencia de su domicilio 😅')
         } else {
             this.setState({ isLoading: true })
-            fetch('http://192.168.0.11/manda2/api/api.php?type=insertar&que=direccion&token=b8d356e2b7134759f486a167583c7e9e', {
+            fetch('http://192.168.0.5/manda2/api/api.php?type=insertar&que=direccion&token=b8d356e2b7134759f486a167583c7e9e', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

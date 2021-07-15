@@ -47,7 +47,7 @@ export default class AgregarScreen extends Component {
             this.setState({ isLoading: false });
             Alert.alert('Ops...', 'No puedes dejar sin rellenar 😐');
         } else {
-            var direccion = "http://192.168.0.11/manda2/api/negocios.php?type=insertar&que=producto";
+            var direccion = "http://192.168.0.5/manda2/api/negocios.php?type=insertar&que=producto";
             fetch(direccion, {
                 method: 'POST',
                 headers: {

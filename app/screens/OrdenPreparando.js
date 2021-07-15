@@ -15,7 +15,7 @@ const largo = width - 40;
 // })
 
 
-export default class OrdenNueva extends Component {
+export default class OrdenPreparando extends Component {
     constructor(props) {
         super(props);
         this.state = { isLoading: true, success: false, dataDatos: [], dataLista: [], dataProductos: [], carrito: '', actual: '', information: [], showModal: false, token: this.props.Token, nuevas: '', modalDatos: [], modalLista: [] }; this.arrayholder = [];
@@ -26,7 +26,7 @@ export default class OrdenNueva extends Component {
             const respuesta = await AsyncStorage.getItem("@usuario:key")
             this.setState({ information: JSON.parse(respuesta) })
             var arreglo = { "datos": { "elapsed": "37 min", "fecha": "03:04 PM", "id": "37c45a349eb740bb325dd47860d5267a", "nombre": "Silvanna", "subtotal": "9", "total": "29", "uid": "12" }, "productos": [{ "cantidad": "1", "nombre": "Agua Ciel 600ml", "subtotal": "9" }] }
-            var url = "http://192.168.0.5/manda2/api/ordenes.php?type=consulta&que=nuevas_ordenes";
+            var url = "http://192.168.0.5/manda2/api/ordenes.php?type=consulta&que=preparando_ordenes";
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -72,7 +72,7 @@ export default class OrdenNueva extends Component {
         //this.setState({ isLoading: true })
         var conf = this.state.dataLista.splice(this.state.actual, 1);
         var nuevas = this.state.nuevas - 1;
-        this.setState({ nuevas, showModal: false, actual: ''})
+        this.setState({ nuevas, showModal: false, actual: '' })
         const settings = {
             method: 'POST',
             headers: {
@@ -84,9 +84,9 @@ export default class OrdenNueva extends Component {
                 id_pedido: this.state.modalDatos.id
             })
         };
-        
+
         try {
-            const peticion = await fetch('http://192.168.0.5/manda2/api/ordenes.php?type=actualizar&que=orden',settings);
+            const peticion = await fetch('http://192.168.0.5/manda2/api/ordenes.php?type=actualizar&que=orden', settings);
             const resp = await peticion.json();
             console.log(resp.status)
         } catch (e) {
@@ -127,7 +127,7 @@ export default class OrdenNueva extends Component {
                     backdropTransitionInTiming={600}
                     backdropTransitionOutTiming={100}
                     onBackdropPress={this.close}>
-                    <View style={{ backgroundColor: '#fff', padding: 8, borderRadius: 4, elevation: 5, borderColor: '#bbbbbb5c', borderWidth: 1 }}>
+                    <View style={{ backgroundColor: '#fff', padding: 8, borderRadius: 4, elevation: 5 }}>
                         <View style={{ flexDirection: 'row', borderBottomColor: '#e6e8eb', borderBottomWidth: 1, padding: 12 }}>
                             <Text style={[styles.textoNotaL, { paddingRight: 22 }]}>{this.state.modalDatos.uid}</Text>
                             <Text style={styles.textoNota}>{this.state.modalDatos.nombre}</Text>
@@ -145,31 +145,25 @@ export default class OrdenNueva extends Component {
                             ))}
                         </ScrollView>
 
-                        <View style={{ paddingRight: 12, paddingLeft: 12, paddingTop: 10, paddingBottom: 10, flexDirection: 'row-reverse' }}>
+                        <View style={{ paddingRight: 12, paddingLeft: 12, paddingTop: 15, paddingBottom: 15, flexDirection: 'row-reverse' }}>
                             <Text style={{ fontFamily: 'Oxygen-Bold', fontSize: 15, paddingLeft: 24, color: '#3b3b3b' }}>${this.state.modalDatos.subtotal}.00</Text>
                             <Text style={{ fontFamily: 'Oxygen-Bold', fontSize: 15, color: '#3b3b3b' }}>Total</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                            <TouchableOpacity onPress={() => this.setState({ showModal: false })} style={{ marginRight: 10 }}>
-                                <View style={[styles.btnBlanco, { marginTop: 0, alignContent: 'center', justifyContent: 'center', alignSelf: 'center', flexDirection: 'row' }]}>
-                                    <Text style={styles.btntxt2A}>Listo</Text>
-                                </View>
-                            </TouchableOpacity>
-
+                        <View style={{ justifyContent: 'center', paddingBottom:15 }}>
                             <TouchableOpacity onPress={() => this.confirmar()}>
                                 <View style={[styles.btnAzul, { marginTop: 0, alignContent: 'center', justifyContent: 'center', alignSelf: 'center', flexDirection: 'row' }]}>
-                                    <Text style={styles.btntxt2}>Confirmar</Text>
+                                    <Text style={styles.btntxt2}>Listo para la recolección</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
                     </View>
                 </Modal>
                 <ScrollView style={{ paddingRight: 20, paddingLeft: 20 }}>
-                    <Text style={{ fontFamily: 'Oxygen-Bold', fontSize: 16, paddingBottom: 4, color: '#434343' }}>Nuevas ({this.state.nuevas})</Text>
+                    <Text style={{ fontFamily: 'Oxygen-Bold', fontSize: 16, paddingBottom: 4, color: '#434343' }}>En preparación ({this.state.nuevas})</Text>
                     {this.state.dataLista.map((orden, index) => (
                         <TouchableOpacity key={index} onPress={() => this.ShowModal(index)}>
-                            <View style={{ flex: 1, height: 78, padding: 10, borderRadius: 5, marginBottom: 12, backgroundColor: '#06c167', justifyContent: 'center' }}>
+                            <View style={{ flex: 1, height: 78, padding: 10, borderRadius: 12, marginBottom: 12, backgroundColor: '#fff', justifyContent: 'center', borderLeftColor: color.AZUL, borderLeftWidth: 5 }}>
                                 <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 10 }}>
                                     <Text style={[styles.textoNegocioL, { paddingRight: 20 }]}>{orden.datos.uid}</Text>
                                     <Text style={styles.textoNegocio}>{orden.datos.nombre}</Text>
@@ -216,7 +210,7 @@ const styles = StyleSheet.create({
     },
     btnAzul: {
         backgroundColor: color.BLUE,
-        width: (width / 2) - 35,
+        width: width - 65,
         borderRadius: 40,
         padding: 2
     },
@@ -230,13 +224,13 @@ const styles = StyleSheet.create({
     },
     textoNegocio: {
         fontSize: 18,
-        color: color.WHITE,
+        color: color.BLACK,
         fontFamily: "Oxygen-Bold",
         textAlignVertical: 'center'
     },
     textoNegocioL: {
         fontSize: 18,
-        color: color.WHITE,
+        color: color.BLACK,
         fontFamily: "Oxygen-Regular",
         textAlignVertical: 'center'
     },
@@ -253,15 +247,9 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center'
     },
     btntxt2: {
-        fontSize: 15,
+        fontSize: 17,
         color: color.WHITE,
-        paddingVertical: 10,
-        fontFamily: 'Oxygen-Bold',
-    },
-    btntxt2A: {
-        fontSize: 15,
-        color: color.BLUE,
-        paddingVertical: 10,
+        paddingVertical: 12,
         fontFamily: 'Oxygen-Bold',
     },
 });

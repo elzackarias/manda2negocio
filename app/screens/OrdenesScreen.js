@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Icono from 'react-native-vector-icons/MaterialCommunityIcons';
 import { mainStyles, loginStyles } from '@styles/styles'
 import OrdenNueva from '@screens/OrdenNueva'
+import OrdenPreparando from '@screens/OrdenPreparando'
 import Usuario from '@screens/UsuarioScreen'
 
 var { width, height } = Dimensions.get("window")
@@ -52,7 +53,7 @@ export default class Ordenes extends Component {
               <Icon name={this.state.module == 1 ? "ios-reader" : "ios-reader-outline"} size={40} color={this.state.module == 1 ? color.AZUL : "gray"} />
             </TouchableOpacity>
             <TouchableOpacity style={[styles.itemTab, { backgroundColor: this.state.module == 2 ? "#C4E1F5" : "#e3eff7" }]} onPress={() => this.setState({ module: 2 })}>
-              <Icon name={this.state.module == 2 ? "ios-cafe" : "ios-cafe-outline"} size={40} color={this.state.module == 2 ? color.AZUL : "gray"} />
+              <Icon name={this.state.module == 2 ? "ios-timer-sharp" : "ios-timer-outline"} size={40} color={this.state.module == 2 ? color.AZUL : "gray"} />
             </TouchableOpacity>
             <TouchableOpacity style={[styles.itemTab, { backgroundColor: this.state.module == 3 ? "#C4E1F5" : "#e3eff7" }]} onPress={() => this.setState({ module: 3 })}>
               <Icono name={this.state.module == 3 ? "shopping" : "shopping-outline"} size={40} color={this.state.module == 3 ? color.AZUL : "gray"} />
@@ -62,7 +63,7 @@ export default class Ordenes extends Component {
 
         {
           this.state.module == 1 ? <OrdenNueva Token={this.state.token} />
-            //:this.state.module==2? <Searcher />
+            :this.state.module==2? <OrdenPreparando Token={this.state.token} />
             //:this.state.module==3? 
             //:this.state.module==4? <Ordenes />
             : <Usuario />

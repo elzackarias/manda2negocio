@@ -101,7 +101,7 @@ export default function SplashScreen(props) {
                 })
             };
             try {
-                const fetchResponse = await fetch('http://192.168.0.11/manda2/api/negocios.php?type=actualizar&que=tokenid', settings);
+                const fetchResponse = await fetch('http://192.168.0.5/manda2/api/negocios.php?type=actualizar&que=tokenid', settings);
                 const data = await fetchResponse.json();
                 
                 if(data.status == "EXITO"){

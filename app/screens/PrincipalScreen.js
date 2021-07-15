@@ -27,14 +27,12 @@ export default function PrincipalScreen(props) {
             });
 
         const unsubscribe = messaging().onMessage(async remoteMessage => {
+            //props.navigation.navigate('Ordenes', { token: tk })
+            Alert.alert('Nueva orden xdlol','xddlol')
             console.log('Message handled in the background!', JSON.stringify(remoteMessage));
         });
 
-        const fondo = messaging().setBackgroundMessageHandler(async remoteMessage => {
-            console.log('Message handled in the background!', JSON.stringify(remoteMessage));
-        });
-
-        const url = "http://192.168.0.11/manda2/api/main_screen.php?type=main"
+        const url = "http://192.168.0.5/manda2/api/main_screen.php?type=main"
         fetch(url)
             .then((response) => response.json())
             .then((responseJson) => {
