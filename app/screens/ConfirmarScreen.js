@@ -61,7 +61,7 @@ export default class ConfirmarScreen extends Component {
             })
         };
         try {
-            const fetchResponse = await fetch('http://192.168.0.5/manda2/api/api.php?type=insertar&que=pedido', settings);
+            const fetchResponse = await fetch('http://192.168.0.11/manda2/api/api.php?type=insertar&que=pedido', settings);
             const data = await fetchResponse.json();
             
             if(data.status == "EXITO"){

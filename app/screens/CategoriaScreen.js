@@ -31,7 +31,7 @@ export default class Categoria extends Component {
             //console.log(this.state.information)
 
             //console.log(TiendaID)
-            var url = "http://192.168.0.5/manda2/api/main_screen.php?type=categoria&id=";
+            var url = "http://192.168.0.11/manda2/api/main_screen.php?type=categoria&id=";
             var link = url + TiendaID;
             return fetch(link.replace(/['"]+/g, ''))
                 .then(response => response.json())

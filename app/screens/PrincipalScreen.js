@@ -32,7 +32,7 @@ export default function PrincipalScreen(props) {
             console.log('Message handled in the background!', JSON.stringify(remoteMessage));
         });
 
-        const url = "http://192.168.0.5/manda2/api/main_screen.php?type=main"
+        const url = "http://192.168.0.11/manda2/api/main_screen.php?type=main"
         fetch(url)
             .then((response) => response.json())
             .then((responseJson) => {
