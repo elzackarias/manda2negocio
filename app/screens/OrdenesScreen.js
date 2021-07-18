@@ -7,6 +7,7 @@ import Icono from 'react-native-vector-icons/MaterialCommunityIcons';
 import { mainStyles, loginStyles } from '@styles/styles'
 import OrdenNueva from '@screens/OrdenNueva'
 import OrdenPreparando from '@screens/OrdenPreparando'
+import OrdenLista from '@screens/OrdenLista'
 import Usuario from '@screens/UsuarioScreen'
 
 var { width, height } = Dimensions.get("window")
@@ -64,9 +65,10 @@ export default class Ordenes extends Component {
         {
           this.state.module == 1 ? <OrdenNueva Token={this.state.token} />
             :this.state.module==2? <OrdenPreparando Token={this.state.token} />
+            : <OrdenLista Token={this.state.token} />
             //:this.state.module==3? 
             //:this.state.module==4? <Ordenes />
-            : <Usuario />
+            //: <Usuario />
         }
 
       </View>

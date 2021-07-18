@@ -16,6 +16,7 @@ const largo = width - 40;
 
 
 export default class OrdenNueva extends Component {
+    
     constructor(props) {
         super(props);
         this.state = { isLoading: true, success: false, dataDatos: [], dataLista: [], dataProductos: [], carrito: '', actual: '', information: [], showModal: false, token: this.props.Token, nuevas: '', modalDatos: [], modalLista: [] }; this.arrayholder = [];
@@ -53,6 +54,12 @@ export default class OrdenNueva extends Component {
         }
     }
 
+
+
+    componentWillUnmount(){
+
+    }
+
     hideSuccess() {
         this.setState({ isLoading: true });
         this.setState({ success: false });
@@ -73,6 +80,8 @@ export default class OrdenNueva extends Component {
         var conf = this.state.dataLista.splice(this.state.actual, 1);
         var nuevas = this.state.nuevas - 1;
         this.setState({ nuevas, showModal: false, actual: ''})
+        let tiempo = Math.floor(Date.now() / 1000);
+
         const settings = {
             method: 'POST',
             headers: {
@@ -81,7 +90,8 @@ export default class OrdenNueva extends Component {
             },
             body: JSON.stringify({
                 id: this.state.information.id,
-                id_pedido: this.state.modalDatos.id
+                id_pedido: this.state.modalDatos.id,
+                tiempo:tiempo
             })
         };
         
@@ -174,8 +184,7 @@ export default class OrdenNueva extends Component {
                                     <Text style={[styles.textoNegocioL, { paddingRight: 20 }]}>{orden.datos.uid}</Text>
                                     <Text style={styles.textoNegocio}>{orden.datos.nombre}</Text>
                                     <View style={{ flex: 1 }}>
-                                        <Text style={[mainStyles.precio, { textAlign: 'right' }]}>{orden.datos.fecha}</Text>
-                                        <Text style={[mainStyles.precio, { textAlign: 'right' }]}>{orden.datos.elapsed}</Text>
+                                        <Text style={[mainStyles.precio, { textAlign: 'right' }]}>Hace {orden.datos.elapsed}</Text>
                                     </View>
                                 </View>
                             </View>
