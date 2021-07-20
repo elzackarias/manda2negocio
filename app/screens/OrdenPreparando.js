@@ -20,6 +20,7 @@ export default class OrdenPreparando extends Component {
         super(props);
         this.state = { isLoading: true, success: false, dataDatos: [], dataLista: [], dataProductos: [], carrito: '', actual: '', information: [], showModal: false, token: this.props.Token, nuevas: '', modalDatos: [], modalLista: [] }; this.arrayholder = [];
     }
+
     async componentDidMount() {
         try {
             const { navigation } = this.props;
@@ -132,7 +133,7 @@ export default class OrdenPreparando extends Component {
                     backdropTransitionOutTiming={100}
                     onBackdropPress={this.close}>
                     <View style={{ backgroundColor: '#fff', padding: 8, borderRadius: 4, elevation: 5 }}>
-                        <TouchableOpacity onPress={() => this.setState({ showModal: false })}  style={{alignSelf:'flex-end', marginBottom:-24}}>
+                        <TouchableOpacity onPress={() => this.setState({ showModal: false })} style={{ alignSelf: 'flex-end', marginBottom: -24 }}>
                             <View>
                                 <Icono name="close-circle" size={40} />
                             </View>

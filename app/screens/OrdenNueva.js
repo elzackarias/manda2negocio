@@ -45,6 +45,9 @@ export default class OrdenNueva extends Component {
                         Alert.alert(responseJson.titulo, responseJson.msg);
                     } else {
                         this.setState({ dataLista: responseJson.lista, nuevas: responseJson.lista.length, modalDatos: arreglo.datos, modalLista: arreglo.productos })
+                        this._interval = setInterval(() => {
+                            this.realTime();
+                        }, 7000);
                     }
                 }).catch((error) => {
                     console.error(error);
@@ -56,8 +59,36 @@ export default class OrdenNueva extends Component {
 
 
 
-    componentWillUnmount(){
+    componentWillUnmount() {
+        console.log('Unmounting... clearing interval');
+        clearInterval(this._interval);
+    }
 
+    async realTime() {
+        const settings = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify({
+                id: this.state.information.id,
+                token: this.state.token
+            })
+        };
+
+        try {
+            const peticion = await fetch('http://192.168.0.11/manda2/api/ordenes.php?type=consulta&que=nuevas_ordenes', settings);
+            const resp = await peticion.json();
+            if (resp.lista !== this.state.dataLista) {
+                console.log('Nuevas')
+                this.setState({ dataLista: resp.lista, nuevas: resp.lista.length })
+            }else{
+                console.log('Nada nuevo :c')
+            }
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     hideSuccess() {
