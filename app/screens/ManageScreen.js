@@ -34,7 +34,7 @@ export default class Negocio extends Component {
                     this.getProds();
                 }
             );
-            var url = "http://192.168.0.9/manda2/api/negocios.php?type=consulta&que=establecimientos&est=";
+            var url = "http://192.168.0.11/manda2/api/negocios.php?type=consulta&que=establecimientos&est=";
             var link = url + this.state.information.id;
             return fetch(link.replace(/['"]+/g, ''))
                 .then(response => response.json())
@@ -58,7 +58,7 @@ export default class Negocio extends Component {
 
     getProds() {
         this.setState({ isLoading: true })
-        var url = "http://192.168.0.9/manda2/api/negocios.php?type=consulta&que=establecimientos&est=";
+        var url = "http://192.168.0.11/manda2/api/negocios.php?type=consulta&que=establecimientos&est=";
         var link = url + this.state.information.id;
         return fetch(link.replace(/['"]+/g, ''))
             .then(response => response.json())
@@ -82,7 +82,7 @@ export default class Negocio extends Component {
                 {
                     text: "Si", onPress: () => {
                         this.setState({ isLoading: true });
-                        var direccion = "http://192.168.0.9/manda2/api/negocios.php?type=borrar&que=producto&id=";
+                        var direccion = "http://192.168.0.11/manda2/api/negocios.php?type=borrar&que=producto&id=";
                         var urls = direccion + id;
                         fetch(urls.replace(/['"]+/g, ''), {
                             method: 'POST',

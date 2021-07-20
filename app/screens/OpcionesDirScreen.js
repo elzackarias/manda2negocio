@@ -110,7 +110,7 @@ export default class OpcionesDir extends Component {
 
     actionBorrar(index, id, usuario) {
         this.setState({ isLoadingN: true })
-        let link = 'http://192.168.0.9/manda2/api/api.php?type=borrar&que=direccion&user=' + usuario + '&id_direccion=' + id;
+        let link = 'http://192.168.0.11/manda2/api/api.php?type=borrar&que=direccion&user=' + usuario + '&id_direccion=' + id;
         fetch(link)
             .then(response => response.json())
             .then(responseJson => {

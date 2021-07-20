@@ -76,7 +76,7 @@ export default function RecuperarPasswordScreen(props) {
                 Alert.alert('Ops...', 'Rellena el formulario correctamente')
             } else {
                 setLoading(true);
-                fetch('http://192.168.0.9/manda2/api/send_email.php?auth=ge2HXAbfaQKWViODM3c8BIJFjU6N40khTdP51CGSlL9R7E', {
+                fetch('http://192.168.0.11/manda2/api/send_email.php?auth=ge2HXAbfaQKWViODM3c8BIJFjU6N40khTdP51CGSlL9R7E', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
