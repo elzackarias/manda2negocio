@@ -15,7 +15,7 @@ export default class Searcher extends Component {
     this.state = { search: '', isLoading: true, searchBarFocused: false, }; this.arrayholder = [];
   }
   componentDidMount() {
-    return fetch('http://192.168.0.11/manda2/api/api.php?type=consulta&que=establecimientos')
+    return fetch('http://192.168.0.9/manda2/api/api.php?type=consulta&que=establecimientos')
       .then(response => response.json())
       .then(responseJson => {
         this.setState(

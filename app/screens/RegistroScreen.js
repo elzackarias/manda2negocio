@@ -137,7 +137,7 @@ export default function RegistroScreen(props) {
 
                     setLoading(true);
                     //MANDAMOS PETICION A SERVIDOR
-                    fetch('http://192.168.0.11/manda2/api/api.php?type=register', {
+                    fetch('http://192.168.0.9/manda2/api/api.php?type=register', {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',

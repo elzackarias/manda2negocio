@@ -31,7 +31,7 @@ export default class CarritoScreen extends Component {
             if (this.state.dataCarrito.length !== 0) {
                 this.setState({ total: this.state.dataCarrito.reduce((sum, value) => (typeof value.subtotal == "number" ? sum + value.subtotal : sum), 0) + Envio, subtotal: this.state.dataCarrito.reduce((sum, value) => (typeof value.subtotal == "number" ? sum + value.subtotal : sum), 0) })
                 //console.log(this.state.dataCarrito.length)
-                var link = 'http://192.168.0.11/manda2/api/api.php?type=consulta&que=nombre-establecimiento&id=' + this.state.dataCarrito[0].negocio;
+                var link = 'http://192.168.0.9/manda2/api/api.php?type=consulta&que=nombre-establecimiento&id=' + this.state.dataCarrito[0].negocio;
                 const getname = await fetch(link)
                 const data = await getname.json()
                 this.setState({ isLoading: false, nombre: data.nombre, isempty: false })

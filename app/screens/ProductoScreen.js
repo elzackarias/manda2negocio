@@ -25,7 +25,7 @@ export default class Producto extends Component {
             prid = navigation.getParam('id_prod');
             prid = prid.replace(/['"]+/g, '');
 
-            var url = "http://192.168.0.11/manda2/api/negocios.php?type=consulta&que=producto&id_prod=";
+            var url = "http://192.168.0.9/manda2/api/negocios.php?type=consulta&que=producto&id_prod=";
             var link = url + ProductoID;
             return fetch(link.replace(/['"]+/g, ''))
                 .then(response => response.json())
@@ -62,7 +62,7 @@ export default class Producto extends Component {
                 this.setState({ isLoading: false });
                 Alert.alert('Ops...', 'No puedes dejar sin rellenar 😐');
             } else {
-                var direccion = "http://192.168.0.11/manda2/api/negocios.php?type=actualizar&que=producto&id=";
+                var direccion = "http://192.168.0.9/manda2/api/negocios.php?type=actualizar&que=producto&id=";
                 var urls = direccion + this.state.IDprod;
                 console.log(urls)
                 fetch(urls.replace(/['"]+/g, ''), {
